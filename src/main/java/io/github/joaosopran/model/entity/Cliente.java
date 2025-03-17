@@ -21,6 +21,6 @@ public class Cliente {
     @Column(nullable = false, length = 11) //OBRIGATÓRIO O CPF E VAI TER 11 CARACTERES
     private String cpf;
 
-    @Column
+    @Column(name = "data_cadastro") //NOME DA COLUNA NO BANCO DE DADOS
     private LocalDate datacadastro;
     }
