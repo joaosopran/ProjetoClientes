@@ -1,10 +1,14 @@
 package io.github.joaosopran.model.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
 @Entity
+@Data
 public class Cliente {
 
     @Id
@@ -19,6 +23,4 @@ public class Cliente {
 
     @Column
     private LocalDate datacadastro;
-
-
-}
+    }
