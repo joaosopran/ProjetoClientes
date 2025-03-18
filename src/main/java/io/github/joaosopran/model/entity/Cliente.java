@@ -1,14 +1,15 @@
 package io.github.joaosopran.model.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Cliente {
 
     @Id
@@ -23,4 +24,10 @@ public class Cliente {
 
     @Column(name = "data_cadastro") //NOME DA COLUNA NO BANCO DE DADOS
     private LocalDate datacadastro;
+
+    @PrePersist
+    public void prePersist() {
+        setDatacadastro(LocalDate.now());
+
     }
+}
