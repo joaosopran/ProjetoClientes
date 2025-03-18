@@ -4,10 +4,7 @@ import io.github.joaosopran.model.entity.Cliente;
 import io.github.joaosopran.model.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/clientes")
@@ -21,8 +18,8 @@ public class ClienteController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED) // ABORDAGEM DE CÓDIGO LIMPOR E ORGANIZADO
-    public Cliente salvar(Cliente cliente) {
+    @ResponseStatus(HttpStatus.CREATED) // ABORDAGEM DE CÓDIGO LIMPO E ORGANIZADO
+    public Cliente salvar(@RequestBody Cliente cliente) {
         return repository.save(cliente);
     }
 

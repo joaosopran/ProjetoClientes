@@ -1,5 +1,6 @@
 package io.github.joaosopran.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,6 +24,7 @@ public class Cliente {
     private String cpf;
 
     @Column(name = "data_cadastro") //NOME DA COLUNA NO BANCO DE DADOS
+    @JsonFormat(pattern = "dd/MM/yyyy") //FORMATO DE DATA
     private LocalDate datacadastro;
 
     @PrePersist
