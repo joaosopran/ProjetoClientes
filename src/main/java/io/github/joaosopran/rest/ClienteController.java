@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/api/clientes")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ClienteController {
 
     private final ClienteRepository repository;
@@ -30,9 +32,14 @@ public class ClienteController {
         this.repository = repository;
     }
 
+    @GetMapping
+    public List<Cliente> obterTodos(){
+        return repository.findAll();
+    }
+
     // PARA SALVAR UM CLIENTE
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED) // ABORDAGEM DE CÓDIGO LIMPO E ORGANIZADO
+    @ResponseStatus(HttpStatus.CREATED)
     public Cliente salvar(@RequestBody @Valid Cliente cliente) {
         return repository.save(cliente);
     }
