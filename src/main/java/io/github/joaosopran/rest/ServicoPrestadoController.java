@@ -19,6 +19,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/servicos-prestados")
 @RequiredArgsConstructor
+@CrossOrigin("http://localhost:4200")
 public class ServicoPrestadoController {
 
     private final ClienteRepository clienteRepository;
@@ -40,7 +41,7 @@ public class ServicoPrestadoController {
         servicoPrestado.setDescricao(dto.getDescricao());
         servicoPrestado.setData(data);
         servicoPrestado.setCliente(cliente);
-        servicoPrestado.setValor( bigDecimalConverter.converter(dto.getPreco()) );
+        servicoPrestado.setValor(dto.getPreco());
 
         return repository.save(servicoPrestado);
     }

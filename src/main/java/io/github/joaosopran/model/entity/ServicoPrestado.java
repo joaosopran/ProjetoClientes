@@ -1,6 +1,7 @@
 package io.github.joaosopran.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -19,13 +20,16 @@ public class ServicoPrestado {
     private String descricao;
 
     @ManyToOne
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
-    @Column
+    @Column(precision = 10, scale = 2) // Exemplo para BigDecimal
     private BigDecimal valor;
 
     @Column
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(pattern = "yyyy/MM/dd")
     private LocalDate data;
+
+    // Getters e setters são gerados pelo @Data do Lombok
 }
