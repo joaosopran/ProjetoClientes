@@ -103,6 +103,5 @@ public class ClienteController {
         errorResponse.put("error", "CPF já cadastrado.");
         return ResponseEntity.badRequest().body(errorResponse);
     }
-
 }
 
